@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Download Result</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+    table{margin-left:auto; margin-right:auto;text-align:center; margin-top:50px;}
+    .form-control{height:30px;border:solid 2px black}
+    .btn{height:30px; line-height:15px;}
+    .menu_bar{margin-left:auto;margin-right:auto;border-bottom:2px solid black;text-align:center; padding:20px; width:65%}
+    </style>
+</head>
+<body>
+<div class="menu_bar">
+    <a class="btn  btn-outline-primary" href="admission">Addmission</a>
+    <a class="btn btn-outline-primary" href="http://127.0.0.1:8000">Generate Result</a>
+    <a class="btn btn-outline-primary" href="get_result">Download Result</a>
+    <a class="btn btn-outline-primary" href="delete_student">Addmision Cancel</a>
+    <a class="btn btn-outline-primary" href="update_detail">Update Student Details</a>
+</div>
+    <table>
+    <form action="fetch_result" method="POST">
+        {% csrf_token %}
+        <tr><th><input class="form-control" type="text" name="roll_no" placeholder="Roll number"></th></tr>
+        <tr><th><input type="submit" class="btn btn-outline-primary" value="DOWNLOAD"></th></tr>
+        </form>
+    </table>
+</body>
+</html>

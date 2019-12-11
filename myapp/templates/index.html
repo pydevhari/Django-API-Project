@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Marksheet</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        input {
+            align: right
+        }
+
+        table {
+            margin-left: auto;
+            margin-right: auto;
+            width: 65%;
+        }
+
+        .table1 th input {
+            float: right;
+            height: 25px;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .table2 td {
+            text-align: left;
+        }
+
+        .form-control {
+            font-size: 13px;
+        }
+
+        .table2 td input {
+            float: left;
+        }
+
+        .obtained {
+            width: 116px;
+        }
+
+        .total {
+            border-top: solid 2px lightgray;
+            border-bottom: solid 2px lightgray
+        }
+
+        table .btn {
+            margin-left: 250px
+        }
+
+        .btn_row {
+            border-bottom: solid 2px lightgray
+        }
+
+        .btn:hover {
+            color: white
+        }
+
+        .menu_bar {
+            margin-left: auto;
+            margin-right: auto;
+            border-bottom: 2px solid black;
+            text-align: center;
+            padding: 20px;
+            width: 65%
+        }
+
+        .main_div {
+            margin-top: 30px
+        }
+
+        .remark {
+            width: 30px
+        }
+
+        .obt {
+            width: 40px
+        }
+
+        .center {
+            align: center
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu_bar">
+        <a class="btn  btn-outline-primary" href="admission">Addmission</a>
+        <a class="btn btn-outline-primary" href="">Generate Result</a>
+        <a class="btn btn-outline-primary" href="get_result">Download Result</a>
+        <a class="btn btn-outline-primary" href="delete_student">Addmision Cancel</a>
+        <a class="btn btn-outline-primary" href="update_detail">Update Student Details</a>
+    </div>
+    <div class="main_div">
+        <table class="table1" id="table1" border=0>
+            <form action="insert_data" method="POST">
+                {% csrf_token %}
+                <tr>
+                    <th><label>Name</label></th>
+                    <th><input class="form-control" type="text" oninput="this.value = this.value.toUpperCase()"
+                            name="name" required></th>
+                    <th><label>Roll No.</label></th>
+                    <th><input class="form-control" type="number" name="roll" required></th>
+                </tr>
+                <tr>
+                    <th><label>Father Name</label></th>
+                    <th><input class="form-control" oninput="this.value = this.value.toUpperCase()" type="text"
+                            name="fname" required></th>
+                    <th><label>Enroll. No.</label></th>
+                    <th><input class="form-control" type="number" name="enroll" required></th>
+                </tr>
+                <tr>
+                    <th><label>Mother Name</label></th>
+                    <th><input class="form-control" oninput="this.value = this.value.toUpperCase()" type="text"
+                            name="mname" required></th>
+                    <th><label>Category</label></th>
+                    <th><input class="form-control" type="text" value="Regular" required name="category"></th>
+                </tr>
+        </table>
+        <table class="table2" border=0>
+            <tr>
+                <th>PCODE</th>
+                <th>Subject</th>
+                <th class="center">MAX</th>
+                <th class="center">MIN</th>
+                <th class="obt">Obtained</th>
+                <th class="remark">REMARK</th>
+            </tr>
+            <tr>
+                <td>M3MCA1-CT11</td>
+                <td>DBMS</td>
+                <td>100</td>
+                <td>35</td>
+                <td><input class="form-control" type="number" min="0" max="100" step="1" name="obt_dbms" required
+                        value="" id="inp1" onInput="addFunction()"></td>
+                <td><input class="form-control" type="text" name="remark_dbms" id="remark_dbms"></td>
+            </tr>
+            <tr>
+                <td>M3MCA2-CT12</td>
+                <td>OS</td>
+                <td>100</td>
+                <td>35</td>
+                <td><input class="form-control" type="number" min="0" max="100" step="1" required name="obt_os" value=""
+                        id="inp2" onInput="addFunction()"></td>
+                <td><input class="form-control" type="text" name="remark_os" id="remark_os" value=""></td>
+            </tr>
+            <tr>
+                <td>M3MCA3-CT13</td>
+                <td>ALGORITHMS</td>
+                <td>100</td>
+                <td>35</td>
+                <td><input class="form-control" type="number" min="0" max="100" step="1" required name="obt_algo"
+                        value="" maxlength="3" id="inp3" onInput="addFunction()"></td>
+                <td><input class="form-control" type="text" name="remark_algo" id="remark_algo" value="">
+                </td>
+            </tr>
+            <tr>
+                <td>M3MCA4-CT14</td>
+                <td>JAVA</td>
+                <td>100</td>
+                <td>35</td>
+                <td><input class="form-control" type="number" min="0" max="100" step="1" required name="obt_java"
+                        value="" id="inp4" onInput="addFunction()"></td>
+                <td><input class="form-control" type="text" name="remark_java" id="remark_java"></td>
+            </tr>
+            <tr>
+                <td>M3MCA5-CT15</td>
+                <td>CN</td>
+                <td>100</td>
+                <td>35</td>
+                <td><input class="form-control" type="number" min="0" max="100" step="1" name="obt_cn" required value=""
+                        id="inp5" onInput="addFunction()"></td>
+                <td><input class="form-control" type="text" name="remark_cn" value="" id="remark_cn"></td>
+            </tr>
+            <tr>
+                <td>M3MCA6-CT05</td>
+                <td>JAVA-LAB</td>
+                <td>100</td>
+                <td>35</td>
+                <td><input class="form-control" type="number" min="0" max="100" step="1" name="obt_java_lab" required
+                        value="" id="inp6" onInput="addFunction()"></td>
+                <td><input class="form-control" type="text" name="remark_java_lab" id="remark_java_lab" value=""></td>
+            </tr>
+            <tr class="total">
+                <td colspan=3>Total marks obtained</td>
+                <td></td>
+                <td><input id="sum" class="form-control obtained" type="text" name="total" value=""></td>
+                <td><input id="pass" class="form-control obtained" type="text" name="result" value=""
+                        placeholder="Result"></td>
+            </tr>
+            <tr class="btn_row">
+                <td colspan=6><input class="btn btn-danger" type="submit" name="submit" value="GENERATE RESULT"></td>
+            </tr>
+            </form>
+        </table>
+    </div>
+</body>
+
+</html>

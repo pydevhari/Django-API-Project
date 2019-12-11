@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Result</title>
+    <link rel="stylesheet" href="../bootstrap-4/css/bootstrap.min.css">
+    <style>
+        .table2 td,
+        .table2 th {
+            border: solid 2px lightgray
+        }
+
+        .table1 td {
+            padding-left: 20px
+        }
+
+        .table1 th {
+            padding-left: 20px
+        }
+
+        table {
+            margin-left: auto;
+            margin-right: auto;
+            width: 60%
+        }
+
+        .table2 td {
+            text-align: center;
+        }
+
+        .table2 th {
+            text-align: center
+        }
+
+        .obtained {
+            width: 116px;
+        }
+
+        .total {
+            border-top: solid 2px lightgray;
+            border-bottom: solid 2px black
+        }
+
+        h3,
+        p {
+            text-align: center
+        }
+
+        .p1 {
+            font-style: italic;
+            margin-bottom: 0px;
+        }
+
+        .p2 {
+            font-weight: bold;
+            margin-bottom: 0px
+        }
+
+        .table1 {
+            border: solid 2px lightgray;
+        }
+
+        a {
+            align: right
+        }
+    </style>
+</head>
+
+<body>
+
+    <table class="table1" border=0>
+        <tr>
+            <th colspan=4>
+                <h3>MOHANLAL SUKHADIA UNIVERSITY, UDAIPUR</h3>
+            </th>
+        </tr>
+        <tr>
+            <th colspan=4>
+                <p class="p1">(Accredited with 'A' Grade by NAAC)</p>
+            </th>
+        </tr>
+        <tr>
+            <th colspan=4>
+                <p class="p2">STATEMENT OF MARKS</p>
+            </th>
+        </tr>
+        <tr>
+            <th colspan=4>
+                <p class="p2">MCA THIRD SEMESTER EXAMINATION- 2019</p>
+            </th>
+        </tr>
+        <tr>
+            {% for i in results|slice:":1" %}
+            <th><label>Name : </label></th>
+            <td>{{ i.name }}</td>
+            <th><label>Roll No. : </label></th>
+            <td>{{ i.roll }}</td>
+        </tr>
+        <tr>
+            <th><label>Father Name :</label></th>
+            <td>{{ i.fname }}</td>
+            <th><label>Enroll. No.</label></th>
+            <td>{{ i.enroll }}</td>
+        </tr>
+        <tr>
+            <th><label>Mother Name : </label></th>
+            <td>{{ i.mname }}</td>
+            <th><label>Category</label></th>
+            <td>{{ i.category }}</td>
+            {%endfor%}
+        </tr>
+    </table>
+    <table class="table2" border=0>
+        <tr>
+            <th>PCODE</th>
+            <th>Subject</th>
+            <th class="center">MAX</th>
+            <th class="center">MIN</th>
+            <th class="obt">Obtained</th>
+            <th class="remark">REMARK</th>
+        </tr>
+        <tr>
+            <td>M3MCA1-CT11</td>
+            <td>DBMS</td>
+            <td>100</td>
+            <td>35</td>
+            <td>{{obt.0}}</td>
+            <td>{{remark.0}}</td>
+        </tr>
+        <tr>
+            <td>M3MCA2-CT12</td>
+            <td>OS</td>
+            <td>100</td>
+            <td>35</td>
+            <td>{{obt.1}}</td>
+            <td>{{remark.1}}</td>
+        </tr>
+        <tr>
+            <td>M3MCA3-CT13</td>
+            <td>ALGORITHMS</td>
+            <td>100</td>
+            <td>35</td>
+            <td>{{obt.2}}</td>
+            <td>{{remark.2}}</td>
+        </tr>
+        <tr>
+            <td>M3MCA4-CT14</td>
+            <td>JAVA</td>
+            <td>100</td>
+            <td>35</td>
+            <td>{{obt.3}}</td>
+            <td>{{remark.3}}</td>
+        </tr>
+        <tr>
+            <td>M3MCA5-CT15</td>
+            <td>CN</td>
+            <td>100</td>
+            <td>35</td>
+            <td>{{obt.4}}</td>
+            <td>{{remark.4}}</td>
+        </tr>
+        <tr>
+            <td>M3MCA6-CT05</td>
+            <td>JAVA-LAB</td>
+            <td>100</td>
+            <td>35</td>
+            <td>{{obt.5}}</td>
+            <td>{{remark.5}}</td>
+        </tr>
+        <tr class="total">
+                {% for i in results|slice:":1" %}
+            <td colspan=3>Total marks obtained</td>
+            <td></td>
+            <td>{{i.total}}</td>
+            <td>{{i.result}}</td>
+        </tr>
+        <tr><td colspan="6"><a href="#" onclick="window.print()">Download</a></td></tr>
+        {%endfor%}
+    </table>
+</body>
+
+</html>
